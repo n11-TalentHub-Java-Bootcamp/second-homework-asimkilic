@@ -1,4 +1,5 @@
 package com.asimkilic.secondhomeworkasimkilic.entity;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,6 +10,9 @@ public class User {
     @GeneratedValue(generator = "user_generator")
     @Column(name = "ID", nullable = false)
     private Long id;
+
+    @Column(name = "USERNAME", length = 20)
+    private String username;
 
     @Column(name = "FIRST_NAME", length = 50)
     private String firstName;
@@ -26,8 +30,9 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String firstName, String lastName, String email, String cellPhone) {
+    public User(Long id, String username, String firstName, String lastName, String email, String cellPhone) {
         this.id = id;
+        this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -40,6 +45,14 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getFirstName() {
@@ -73,8 +86,9 @@ public class User {
     public void setCellPhone(String cellPhone) {
         this.cellPhone = cellPhone;
     }
+
     @Override
     public String toString() {
-        return id == null ? "" : id.toString();
+        return id == null ? "" : id.toString() + " " + firstName + " " + lastName;
     }
 }
