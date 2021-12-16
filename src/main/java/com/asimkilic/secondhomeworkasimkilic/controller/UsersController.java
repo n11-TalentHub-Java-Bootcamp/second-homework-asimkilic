@@ -5,13 +5,10 @@ import com.asimkilic.secondhomeworkasimkilic.dto.user.UserDto;
 
 import com.asimkilic.secondhomeworkasimkilic.service.entityservice.UserEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.asimkilic.secondhomeworkasimkilic.converter.UserConverter.INSTANCE;
 
 @RestController
 @RequestMapping("/api/users")
@@ -22,6 +19,16 @@ public class UsersController {
 
     @GetMapping
     public List<UserDto> findAll() {
-        return INSTANCE.convertUserToUserDto(userEntityService.findAll());
+        return userEntityService.findAll();
+    }
+
+    @GetMapping("/username")
+    public UserDto findUserByUsername(@RequestParam("q") String username) {
+        return userEntityService.findUserByUsername(username); // TODO: olmayan kullanıcı olduğunda hata döndürsün
+    }
+
+    @GetMapping("/phone")
+    public UserDto findUserByCellPhone(@RequestParam("q") String phone) {
+        return userEntityService.findUserByCellPhone(phone);
     }
 }

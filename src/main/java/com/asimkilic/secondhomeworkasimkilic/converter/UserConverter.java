@@ -13,11 +13,12 @@ public interface UserConverter {
     UserConverter INSTANCE = Mappers.getMapper(UserConverter.class);
 
     // Convert Entity To DTO
-    List<UserDto> convertUserToUserDto(List<User> userList);
+    List<UserDto> convertUserListToUserDtoList(List<User> userList);
 
-
+    UserDto convertUserToUserDto(User user);
 
 
     // Convert DTO To Entity
-    List<User> convertUserDtoToUser(List<UserDto> userDtoList);
+    List<User> convertUserDtoListToUserList(List<UserDto> userDtoList);
+    User convertUserDtoToUser(UserDto user);
 }

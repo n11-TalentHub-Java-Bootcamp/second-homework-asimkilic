@@ -10,4 +10,8 @@ import java.util.List;
 public interface UserDao extends JpaRepository<User, Long> {
 
     public List<User> findAll();
+
+    User findUserByUsername(String username);
+    User findUserByCellPhone(String phone);
+
 }
