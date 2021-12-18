@@ -1,6 +1,8 @@
 package com.asimkilic.secondhomeworkasimkilic.converter;
 
 import com.asimkilic.secondhomeworkasimkilic.dto.user.UserDto;
+import com.asimkilic.secondhomeworkasimkilic.dto.user.UserRegisterDto;
+import com.asimkilic.secondhomeworkasimkilic.dto.user.UserUpdateDto;
 import com.asimkilic.secondhomeworkasimkilic.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
@@ -18,7 +20,13 @@ public interface UserConverter {
     UserDto convertUserToUserDto(User user);
 
 
+
     // Convert DTO To Entity
     List<User> convertUserDtoListToUserList(List<UserDto> userDtoList);
+
     User convertUserDtoToUser(UserDto user);
+
+    User convertUserRegisterDtoToUser(UserRegisterDto userRegisterDto);
+
+    User convertUserUpdateDtoToUser(UserUpdateDto userUpdateDto);
 }
