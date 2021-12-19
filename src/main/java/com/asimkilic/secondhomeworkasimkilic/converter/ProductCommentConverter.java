@@ -29,7 +29,7 @@ public interface ProductCommentConverter {
     @AfterMapping
     default void setProductName(@MappingTarget ProductWithCommentDto productWithCommentDto, ProductComment productComment) {
         if (productWithCommentDto.getProductName() == null) {
-          
+
             productWithCommentDto.setProductComment(productComment.getComment());
             productWithCommentDto.setProductName(productComment.getProduct().getName());
         }

@@ -1,5 +1,6 @@
 package com.asimkilic.secondhomeworkasimkilic.exception;
 
+import com.asimkilic.secondhomeworkasimkilic.exception.product.ProductNotFoundException;
 import com.asimkilic.secondhomeworkasimkilic.exception.productcomment.NoCommentException;
 import com.asimkilic.secondhomeworkasimkilic.exception.user.UserNotFoundException;
 import com.asimkilic.secondhomeworkasimkilic.exception.user.UsernameAndPhoneDoesntMatchException;
@@ -36,6 +37,12 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
     }
     @ExceptionHandler
     public final ResponseEntity<Object> handleAllExceptions(NoCommentException ex, WebRequest webRequest) {
+        ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(), webRequest.getDescription((false)));
+        return new ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler
+    public final ResponseEntity<Object> handleAllExceptions(ProductNotFoundException ex, WebRequest webRequest) {
         ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(), webRequest.getDescription((false)));
         return new ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND);
     }
