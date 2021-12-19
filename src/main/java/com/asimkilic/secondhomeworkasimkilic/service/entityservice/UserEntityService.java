@@ -51,6 +51,7 @@ public class UserEntityService {
 
             throw new UsernameAndPhoneDoesntMatchException(userByUserName.getUsername() + " kullanıcı adı ile " + phone + " telefonu bilgileri uyuşmamaktadır.");
         }
+        userDao.delete(userByUserName);
     }
     public UserDto updateUserByUserUpdateDto(UserUpdateDto userUpdateDto){
         Optional<User> userById = userDao.findById(userUpdateDto.getId());

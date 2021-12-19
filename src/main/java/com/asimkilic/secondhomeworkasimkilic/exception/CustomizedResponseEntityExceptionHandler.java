@@ -1,5 +1,6 @@
 package com.asimkilic.secondhomeworkasimkilic.exception;
 
+import com.asimkilic.secondhomeworkasimkilic.exception.productcomment.NoCommentException;
 import com.asimkilic.secondhomeworkasimkilic.exception.user.UserNotFoundException;
 import com.asimkilic.secondhomeworkasimkilic.exception.user.UsernameAndPhoneDoesntMatchException;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
         return new ResponseEntity(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+
     @ExceptionHandler
     public final ResponseEntity<Object> handleAllExceptions(UsernameAndPhoneDoesntMatchException ex, WebRequest webRequest) {
         ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(), webRequest.getDescription((false)));
@@ -29,6 +31,11 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
     }
     @ExceptionHandler
     public final ResponseEntity<Object> handleAllExceptions(UserNotFoundException ex, WebRequest webRequest) {
+        ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(), webRequest.getDescription((false)));
+        return new ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler
+    public final ResponseEntity<Object> handleAllExceptions(NoCommentException ex, WebRequest webRequest) {
         ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(), webRequest.getDescription((false)));
         return new ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND);
     }
