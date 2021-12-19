@@ -1,6 +1,7 @@
 package com.asimkilic.secondhomeworkasimkilic.service.entityservice;
 
 import com.asimkilic.secondhomeworkasimkilic.dao.ProductCommentDao;
+import com.asimkilic.secondhomeworkasimkilic.dto.product.ProductWithCommentDto;
 import com.asimkilic.secondhomeworkasimkilic.dto.productcomment.CommentDto;
 import com.asimkilic.secondhomeworkasimkilic.dto.productcomment.ProductCommentWithUserDetailsDto;
 import com.asimkilic.secondhomeworkasimkilic.entity.ProductComment;
@@ -20,17 +21,23 @@ public class ProductCommentEntityService {
     private ProductCommentDao productCommentDao;
 
     public List<CommentDto> findAllCommentByUserId(Long userId) {
-        List<ProductComment> commentList = productCommentDao.findProductCommentByUserId(userId);
+        List<ProductComment> productCommentList = productCommentDao.findProductCommentByUserId(userId);
 
-        if (commentList.size() < 1) {
+        if (productCommentList.size() < 1) {
             List<Object> usernameByUserid = productCommentDao.findUsernameByUserid(userId);
             if (usernameByUserid.size() != 1)
                 throw new UserNotFoundException("Böyle bir kullanıcı yoktur.");
             String username = String.valueOf(usernameByUserid.get(0));
             throw new NoCommentException(username + " kullanıcı henüz yorum yazmamıştır.");
         }
-        List<CommentDto> commentDtoList = INSTANCE.convertProductCommentListToCommentDtoList(commentList);
-
+        List<CommentDto> commentDtoList = INSTANCE.convertProductCommentListToCommentDtoList(productCommentList);
         return commentDtoList;
+    }
+
+    public List<ProductWithCommentDto> findCommentListByProductId(Long productId) {
+        List<ProductComment> productCommentList = productCommentDao.findProductCommentByProductId(productId);
+
+        List<ProductWithCommentDto> productWithCommentDto = INSTANCE.convertProductCommentListToProductWithCommentDto(productCommentList);
+        return productWithCommentDto;
     }
 }

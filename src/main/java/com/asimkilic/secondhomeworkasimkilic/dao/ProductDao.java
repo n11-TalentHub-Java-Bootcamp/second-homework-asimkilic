@@ -8,5 +8,6 @@ import java.util.List;
 
 @Repository
 public interface ProductDao extends JpaRepository<Product, Long> {
-    public List<Product> findAll();
+     List<Product> findAll();
+
 }

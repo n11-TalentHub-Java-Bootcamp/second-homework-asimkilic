@@ -12,8 +12,10 @@ import java.util.List;
 public interface ProductCommentDao extends JpaRepository<ProductComment, Long> {
 
     List<ProductComment> findProductCommentByUserId(Long userId);
+    List<ProductComment> findProductCommentByProductId(Long productId);
 
     @Query(value = "select u.username from public.User u where u.id=:userId", nativeQuery = true)
     List<Object> findUsernameByUserid(@Param("userId") Long userId);
+
 
 }
