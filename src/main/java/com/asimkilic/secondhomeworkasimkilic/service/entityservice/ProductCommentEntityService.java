@@ -3,7 +3,7 @@ package com.asimkilic.secondhomeworkasimkilic.service.entityservice;
 import com.asimkilic.secondhomeworkasimkilic.dao.ProductCommentDao;
 import com.asimkilic.secondhomeworkasimkilic.dto.product.ProductWithCommentDto;
 import com.asimkilic.secondhomeworkasimkilic.dto.productcomment.CommentDto;
-import com.asimkilic.secondhomeworkasimkilic.dto.productcomment.ProductCommentWithUserDetailsDto;
+import com.asimkilic.secondhomeworkasimkilic.dto.productcomment.NewCommentDto;
 import com.asimkilic.secondhomeworkasimkilic.entity.ProductComment;
 import com.asimkilic.secondhomeworkasimkilic.exception.product.ProductNotFoundException;
 import com.asimkilic.secondhomeworkasimkilic.exception.productcomment.NoCommentException;
@@ -11,15 +11,17 @@ import com.asimkilic.secondhomeworkasimkilic.exception.user.UserNotFoundExceptio
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import static com.asimkilic.secondhomeworkasimkilic.converter.ProductCommentConverter.INSTANCE;
-
 import java.util.List;
+
+import static com.asimkilic.secondhomeworkasimkilic.converter.ProductCommentConverter.INSTANCE;
 
 @Service
 public class ProductCommentEntityService {
 
     @Autowired
     private ProductCommentDao productCommentDao;
+
+
 
     public List<CommentDto> findAllCommentByUserId(Long userId) {
         List<ProductComment> productCommentList = productCommentDao.findProductCommentByUserId(userId);
@@ -46,5 +48,11 @@ public class ProductCommentEntityService {
         }
         List<ProductWithCommentDto> productWithCommentDto = INSTANCE.convertProductCommentListToProductWithCommentDto(productCommentList);
         return productWithCommentDto;
+    }
+
+    public void saveComment(NewCommentDto newCommentDto) {
+        ProductComment productComment = INSTANCE.convertNewCommentDtoToProductComment(newCommentDto);
+        ProductComment save = productCommentDao.save(productComment);
+    
     }
 }

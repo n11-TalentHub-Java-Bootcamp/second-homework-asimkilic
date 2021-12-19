@@ -2,6 +2,7 @@ package com.asimkilic.secondhomeworkasimkilic.converter;
 
 import com.asimkilic.secondhomeworkasimkilic.dto.product.ProductWithCommentDto;
 import com.asimkilic.secondhomeworkasimkilic.dto.productcomment.CommentDto;
+import com.asimkilic.secondhomeworkasimkilic.dto.productcomment.NewCommentDto;
 import com.asimkilic.secondhomeworkasimkilic.entity.ProductComment;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
@@ -34,4 +35,10 @@ public interface ProductCommentConverter {
             productWithCommentDto.setProductName(productComment.getProduct().getName());
         }
     }
+
+    @Mapping(target = "product.id", source = "productId")
+    @Mapping(target = "user.id", source = "userId")
+    @Mapping(target = "commentDate", expression = "java(new java.util.Date())")
+    ProductComment convertNewCommentDtoToProductComment(NewCommentDto newCommentDto);
+
 }

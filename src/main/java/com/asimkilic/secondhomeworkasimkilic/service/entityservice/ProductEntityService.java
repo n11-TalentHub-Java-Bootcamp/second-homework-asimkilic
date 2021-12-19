@@ -22,6 +22,10 @@ public class ProductEntityService {
     }
 
     public List<ProductWithCommentDto> findCommentListByProductId(Long productId) {
-        return productCommentEntityService.findCommentListByProductId(productId);
+     return productCommentEntityService.findCommentListByProductId(productId);
+
+    }
+    public Product findProductById(Long id){
+        return productDao.findProductById(id);
     }
 }

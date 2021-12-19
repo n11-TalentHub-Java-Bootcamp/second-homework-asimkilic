@@ -25,6 +25,10 @@ public class UserEntityService {
         return INSTANCE.convertUserListToUserDtoList(userDao.findAll());
     }
 
+    public User findUserById(Long id) {
+        return userDao.findUserById(id);
+    }
+
     public UserDto findUserByUsername(String username) {
 
         return INSTANCE.convertUserToUserDto(userDao.findUserByUsername(username)); // TODO: olmayan kullanıcı olduğunda hata döndürsün
@@ -53,9 +57,10 @@ public class UserEntityService {
         }
         userDao.delete(userByUserName);
     }
-    public UserDto updateUserByUserUpdateDto(UserUpdateDto userUpdateDto){
+
+    public UserDto updateUserByUserUpdateDto(UserUpdateDto userUpdateDto) {
         Optional<User> userById = userDao.findById(userUpdateDto.getId());
-        if(!userById.isPresent())
+        if (!userById.isPresent())
             throw new UserNotFoundException(userUpdateDto.getId() + " id'ye ait bir kullanıcı bulunamadı.");
         User updatedUser = INSTANCE.convertUserUpdateDtoToUser(userUpdateDto);
         updatedUser.setUsername(userById.get().getUsername());

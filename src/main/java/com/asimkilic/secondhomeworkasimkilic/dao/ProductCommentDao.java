@@ -21,4 +21,6 @@ public interface ProductCommentDao extends JpaRepository<ProductComment, Long> {
     @Query(value = "select p.name from Product p where p.id=:productId", nativeQuery = true)
     List<Object> findProductNameByProductId(@Param("productId") Long productId);
 
+    @Query(value="INSERT into ProductComment set(COMMENT,COMMENT_DATE,PRODUCT_ID,USER_ID) values(:obj.comment,:obj.commentDate,:obj.product.id,:obj.user.id)",nativeQuery = true)
+    void saveProductComment(@Param("obj") ProductComment productcomment);
 }
