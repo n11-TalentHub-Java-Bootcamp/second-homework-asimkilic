@@ -137,7 +137,6 @@ Project Link: [https://github.com/n11-TalentHub-Java-Bootcamp/second-homework-as
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
 
 * [Naming conventions](https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html)
 * [Package names conventions](https://stackoverflow.com/questions/3179216/what-is-the-convention-for-word-separator-in-java-package-names)
