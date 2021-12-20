@@ -22,7 +22,6 @@ public class ProductCommentEntityService {
     private ProductCommentDao productCommentDao;
 
 
-
     public List<CommentDto> findAllCommentByUserId(Long userId) {
         List<ProductComment> productCommentList = productCommentDao.findProductCommentByUserId(userId);
 
@@ -53,6 +52,16 @@ public class ProductCommentEntityService {
     public void saveComment(NewCommentDto newCommentDto) {
         ProductComment productComment = INSTANCE.convertNewCommentDtoToProductComment(newCommentDto);
         ProductComment save = productCommentDao.save(productComment);
-    
+
+    }
+
+    public void deleteCommentByCommentId(Long commentId) {
+        productCommentDao.deleteById(commentId);
+    }
+
+    public List<CommentDto> findAllCommentList() {
+        List<ProductComment> commentList = productCommentDao.findAll();
+        List<CommentDto> commentDtoList = INSTANCE.convertProductCommentListToCommentDtoList(commentList);
+        return commentDtoList;
     }
 }

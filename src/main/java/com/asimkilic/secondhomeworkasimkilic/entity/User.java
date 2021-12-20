@@ -26,6 +26,7 @@ public class User {
     @Column(name = "CELL_PHONE", length = 15)
     private String cellPhone;
 
+
     // Constructors
     public User() {
     }

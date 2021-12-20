@@ -1,9 +1,9 @@
 package com.asimkilic.secondhomeworkasimkilic.dto.productcomment;
 
 public class NewCommentDto {
-    private String comment;
-    private Long productId;
-    private Long userId;
+        private String comment;
+        private Long productId;
+        private Long userId;
 
     public NewCommentDto() {
     }

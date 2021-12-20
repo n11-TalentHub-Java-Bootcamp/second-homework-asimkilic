@@ -14,7 +14,7 @@ public interface ProductCommentConverter {
     ProductCommentConverter INSTANCE = Mappers.getMapper(ProductCommentConverter.class);
 
 
-    @Mapping(target = "username", source = "user.getUsername()")
+   
     List<CommentDto> convertProductCommentListToCommentDtoList(List<ProductComment> productCommentList);
 
     @AfterMapping
@@ -28,7 +28,7 @@ public interface ProductCommentConverter {
     List<ProductWithCommentDto> convertProductCommentListToProductWithCommentDto(List<ProductComment> productCommentList);
 
     @AfterMapping
-    default void setProductName(@MappingTarget ProductWithCommentDto productWithCommentDto, ProductComment productComment) {
+    default void setProductName(@MappingTarget final ProductWithCommentDto productWithCommentDto, ProductComment productComment) {
         if (productWithCommentDto.getProductName() == null) {
 
             productWithCommentDto.setProductComment(productComment.getComment());

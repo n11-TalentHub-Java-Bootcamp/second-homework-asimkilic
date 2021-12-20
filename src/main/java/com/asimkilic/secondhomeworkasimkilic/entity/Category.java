@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "CATEGORY")
 public class Category {
-    @SequenceGenerator(name = "category_generator", sequenceName = "CATEGORY_ID_SEQ", allocationSize = 1)
+    @SequenceGenerator(name = "category_generator", sequenceName = "CATEGORY_ID_SEQ",allocationSize = 1)
     @Id
     @GeneratedValue(generator = "category_generator")
     @Column(name = "ID", nullable = false)

@@ -16,10 +16,11 @@ public class CategoryEntityService {
 
 
     public List<Category> findAll() {
-        return categoryDao.findAll();
+            return categoryDao.findAll();
     }
 
     public Category findCategoryById(Long id){
         return categoryDao.findCategoryById(id);
     }
+
 }

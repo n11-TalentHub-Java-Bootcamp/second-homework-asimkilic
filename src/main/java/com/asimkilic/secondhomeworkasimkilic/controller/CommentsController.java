@@ -16,6 +16,11 @@ public class CommentsController {
     @Autowired
     private ProductCommentEntityService productCommentEntityService;
 
+    @GetMapping()
+    public List<CommentDto> findAllCommentList(){
+
+        return productCommentEntityService.findAllCommentList();
+    }
     @GetMapping("/user/{userid}")
     public List<CommentDto> findAllCommentByUserId(@PathVariable Long userid) {
 
@@ -27,4 +32,10 @@ public class CommentsController {
     public void saveComment(@RequestBody NewCommentDto newCommentDto) {
         productCommentEntityService.saveComment(newCommentDto);
     }
+    @DeleteMapping("/{commentId}")
+    public void deleteCommentByCommentId(@PathVariable Long commentId){
+        productCommentEntityService.deleteCommentByCommentId(commentId);
+    }
+
+
 }
