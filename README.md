@@ -84,7 +84,7 @@ A small e-commerce system is simulated.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/n11-TalentHub-Java-Bootcamp/first-homework-asimkilic-1.git
+   git clone https://github.com/n11-TalentHub-Java-Bootcamp/second-homework-asimkilic.git
    ```
 2. Configure application.settings files for PostgreSQL connection. 
 
@@ -128,7 +128,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Abdullah Asım KILIÇ - a.asim.kilic@gmail.com
 
-Project Link: [https://github.com/n11-TalentHub-Java-Bootcamp/first-homework-asimkilic-1](https://github.com/n11-TalentHub-Java-Bootcamp/first-homework-asimkilic-1)
+Project Link: [https://github.com/n11-TalentHub-Java-Bootcamp/second-homework-asimkilic](https://github.com/n11-TalentHub-Java-Bootcamp/second-homework-asimkilic)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
